@@ -20,7 +20,9 @@ export default function Select({ handleHackathon }: any) {
         }}
       >
         {hackathons.map((hackathon, index) => (
-          <option value={index}>{hackathon.name}</option>
+          <option key={index} value={index}>
+            {hackathon.name}
+          </option>
         ))}
         <option value={hackathons.length}>Custom</option>
       </select>
