@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 
 const personas = [
-  { name: "Participant", inStock: true },
-  { name: "Jury", inStock: false },
-  { name: "Mentor", inStock: false },
+  { id: "participant", enabled: true },
+  { id: "jury", enabled: true },
+  { id: "mentor", enabled: true },
 ];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function SelectPersona() {
+export default function SelectPersona({ handlePersona }: any) {
   const [mem, setMem] = useState(personas[0]);
+
+  useEffect(() => {
+    handlePersona(mem.id);
+  }, [mem]);
 
   return (
     <RadioGroup value={mem} onChange={setMem} className="select-persona">
@@ -23,11 +27,11 @@ export default function SelectPersona() {
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
         {personas.map((type) => (
           <RadioGroup.Option
-            key={type.name}
+            key={type.id}
             value={type}
             className={({ active, checked }) =>
               classNames(
-                type.inStock
+                type.enabled
                   ? "cursor-pointer focus:outline-none"
                   : "opacity-25 cursor-not-allowed",
                 active ? "ring-2 ring-offset-2 ring-indigo-500" : "",
@@ -37,8 +41,11 @@ export default function SelectPersona() {
                 "border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium sm:flex-1"
               )
             }
+            disabled={!type.enabled}
           >
-            <RadioGroup.Label as="span">{type.name}</RadioGroup.Label>
+            <RadioGroup.Label as="span" className="capitalize">
+              {type.id}
+            </RadioGroup.Label>
           </RadioGroup.Option>
         ))}
       </div>
