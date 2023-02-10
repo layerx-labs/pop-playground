@@ -1,0 +1,316 @@
+<html>
+
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&display=swap');
+
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      width: 1000px;
+      height: 1000px;
+      font-family: 'Space Grotesk', Verdana, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      font-feature-settings: 'ss04' on;
+    }
+
+    .pop-wrapper {
+      position: relative;
+      width: 1000px;
+      height: 1000px;
+      background-color: #1b1042;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 51 32'><path fill='white' opacity='0.15' d='M20.002 0.947l5.638 5.641 5.636-5.638 1.334 1.334-5.632 5.636 5.632 5.633-0.062 0.062-1.272 1.272-0.062-0.062-5.577-5.58-5.634 5.638-1.334-1.333 5.632-5.631-5.632-5.638 1.334-1.334zM24.423 8.043l-5.508 5.507 1.087 1.087 5.507-5.511-1.086-1.083zM25.63 9l1.091-1.092-1.072-1.074-1.095 1.092 1.077 1.074zM25.757 9.119l5.519 5.521 1.087-1.087-5.52-5.521-1.086 1.087zM26.855 7.796l5.508-5.512-1.087-1.088-5.508 5.511 1.087 1.089zM25.521 6.715l-5.519-5.522-1.087 1.088 5.515 5.521 1.091-1.087zM35.477 0.983h2.215v13.958h-2.215v-13.958zM35.652 1.157v13.609h1.866v-13.609h-1.866zM39.387 0.983h2.215v13.958h-2.215v-13.958zM39.562 1.157v13.609h1.866v-13.609h-1.866zM43.297 0.983h2.215v13.958h-2.215v-13.958zM43.472 1.157v13.609h1.866v-13.609h-1.866zM47.208 0.983h2.215v13.958h-2.215v-13.958zM47.382 1.157v13.609h1.866v-13.609h-1.866zM1.555 0.99h13.951v13.957h-13.951v-13.957zM1.73 1.164v13.608h13.602v-13.608h-13.602zM35.444 16.889h13.951v13.957h-13.951v-13.957zM35.619 17.064v13.608h13.602v-13.608h-13.602zM3.116 16.908l-0.062-0.062-1.334 1.334 5.636 5.638-5.632 5.631 1.334 1.333 5.634-5.638 5.639 5.642 1.334-1.333-0.062-0.062-5.57-5.572 5.632-5.636-1.334-1.334-5.637 5.64-5.578-5.582zM1.97 29.45l5.508-5.507 1.086 1.084-5.507 5.511-1.087-1.087zM7.608 23.826l1.094-1.093 1.074 1.076-1.091 1.092-1.077-1.074zM14.331 30.54l-5.519-5.521 1.086-1.087 5.52 5.521-1.087 1.087zM15.418 18.184l-5.508 5.512-1.088-1.089 5.508-5.511 1.087 1.088zM3.054 17.093l5.519 5.522-1.087 1.087-5.519-5.521 1.087-1.088zM18.62 16.882h-0.087v13.958h2.215v-13.958h-2.127zM18.707 30.666v-13.609h1.866v13.609h-1.866zM22.53 16.882h-0.087v13.958h2.215v-13.958h-2.127zM22.617 30.666v-13.609h1.866v13.609h-1.866zM26.44 16.882h-0.087v13.958h2.215v-13.958h-2.127zM26.527 30.666v-13.609h1.866v13.609h-1.866zM30.35 16.882h-0.087v13.958h2.215v-13.958h-2.127zM30.437 30.666v-13.609h1.866v13.609h-1.866z'></path></svg>");
+      background-position: center;
+      background-size: auto 170px;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .light-shadow {
+      position: absolute;
+      width: 100%;
+      height: 560px;
+      border-radius: 999px;
+      background-color: #7b5fff;
+      filter: blur(100px);
+      mix-blend-mode: screen;
+      opacity: 0.5;
+    }
+
+    .light-shadow.top {
+      top: 0;
+      transform: translateY(calc(-100% + 100px));
+    }
+
+    .light-shadow.bottom {
+      bottom: 0;
+      transform: translateY(calc(100% - 100px));
+    }
+
+    .copy {
+      position: absolute;
+      width: 100%;
+      height: 100px;
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      padding: 0 5px;
+      color: #ffffff;
+      letter-spacing: -1px;
+      z-index: 2;
+    }
+
+    .copy.tl {
+      top: 0;
+      left: 100px;
+    }
+
+    .copy.r {
+      top: 50px;
+      right: calc(-50% + 150px);
+      transform: rotate(90deg) translateX(50%);
+    }
+
+    .copy.l {
+      bottom: 50px;
+      left: calc(-50% + 150px);
+      transform: rotate(-90deg) translateX(50%);
+    }
+
+    .copy.bl {
+      bottom: 0;
+      left: 100px;
+    }
+
+    .copy .legend {
+      margin-right: 45px;
+      font-size: 20px;
+    }
+
+    .copy .value {
+      font-size: 24px;
+      font-weight: 500;
+      background: linear-gradient(180deg, #e4e0f2 20.54%, #6954b8 100%),
+        linear-gradient(180deg, #e4e0f2 21.22%, #750afe 82.05%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .image {
+      position: relative;
+      border-radius: 30px;
+      box-shadow: -9px 58px 40px rgba(0, 0, 0, 0.6);
+      width: 800px;
+      height: 800px;
+      align-self: center;
+      filter: blur(1.75px);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .image figure div {
+      --glitch: 6px;
+
+      position: absolute;
+      top: 0;
+      left: calc(var(--glitch) * -1);
+      width: calc(100% + var(--glitch) * 2);
+      height: 50px;
+      background-image: url("https://taikai.azureedge.net/-L7X2A4QktFyFYNqQ_QvQDuehCdP8iFv6qTnb6-KSno/rs:fit:350:0:0/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3RhaWthaS1zdG9yYWdlL2ltYWdlcy9mMWJhOWIyMC05MGNjLTExZWQtOWMzOS1kZDY4NGNjMjQwMjBwaG90b18yMDIzLTAxLTEwXzA5LTUyLTE4LmpwZw");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: magenta;
+      background-blend-mode: screen;
+    }
+
+    .image figure div:before,
+    .image figure div:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      mix-blend-mode: multiply;
+      transform: scaleX(1.025);
+    }
+
+    .image figure div:before {
+      background-color: yellow;
+      background-blend-mode: screen;
+      transform-origin: top left;
+    }
+
+    .image figure div:after {
+      background-color: cyan;
+      background-blend-mode: screen;
+      transform-origin: bottom right;
+    }
+
+    .image figure div:nth-child(1) {
+      background-position: 0 0;
+      top: 0;
+      transform: translateX(var(--glitch));
+    }
+
+    .image figure div:nth-child(2) {
+      background-position: 0 -50px;
+      top: 50px;
+      transform: translateX(calc(var(--glitch) * -1));
+    }
+
+    .image figure div:nth-child(3) {
+      background-position: 0 -100px;
+      top: 100px;
+      transform: translateX(var(--glitch));
+    }
+
+    .image figure div:nth-child(4) {
+      top: 150px;
+      background-position: 0 -150px;
+      transform: translateX(calc(var(--glitch) * -1));
+    }
+
+    .image figure div:nth-child(5) {
+      top: 200px;
+      background-position: 0 -200px;
+      transform: translateX(var(--glitch));
+    }
+
+    .image figure div:nth-child(6) {
+      top: 250px;
+      background-position: 0 -250px;
+      transform: translateX(calc(var(--glitch) * -1));
+    }
+
+    .image figure div:nth-child(7) {
+      top: 300px;
+      background-position: 0 -300px;
+      transform: translateX(var(--glitch));
+    }
+
+    .image figure div:nth-child(8) {
+      top: 350px;
+      background-position: 0 -350px;
+      transform: translateX(calc(var(--glitch) * -1));
+    }
+
+    .image figure div:nth-child(9) {
+      top: 400px;
+      background-position: 0 -400px;
+      transform: translateX(var(--glitch));
+    }
+
+    .image figure div:nth-child(10) {
+      top: 450px;
+      background-position: 0 -450px;
+      transform: translateX(calc(var(--glitch) * -1));
+    }
+
+    .image figure div:nth-child(11) {
+      top: 500px;
+      background-position: 0 -500px;
+      transform: translateX(var(--glitch));
+    }
+
+    .image figure div:nth-child(12) {
+      top: 550px;
+      background-position: 0 -550px;
+      transform: translateX(calc(var(--glitch) * -1));
+    }
+
+    .image figure div:nth-child(13) {
+      top: 600px;
+      background-position: 0 -600px;
+      transform: translateX(var(--glitch));
+    }
+
+    .image figure div:nth-child(14) {
+      top: 650px;
+      background-position: 0 -650px;
+      transform: translateX(calc(var(--glitch) * -1));
+    }
+
+    .image figure div:nth-child(15) {
+      top: 700px;
+      background-position: 0 -700px;
+      transform: translateX(var(--glitch));
+    }
+
+    .image figure div:nth-child(16) {
+      top: 750px;
+      background-position: 0 -750px;
+      transform: translateX(calc(var(--glitch) * -1));
+    }
+
+    .image>div {
+      position: relative;
+      background: repeating-linear-gradient(transparent 0,
+          rgba(255, 255, 255, 0.05) 10px,
+          transparent 20px);
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pop-wrapper">
+    <div class="copy tl">
+      <span class="legend">Hackathon</span>
+      <span class="value">ETH Porto Hackathon 2023</span>
+    </div>
+    <div class="copy r">
+      <span class="legend">Project</span>
+      <span class="value">Deterministic Encryption and Storage via Snap/IPFS</span>
+    </div>
+    <div class="copy l">
+      <span class="legend">Position</span>
+      <span class="value">3 of 229</span>
+    </div>
+    <div class="copy bl">
+      <span class="legend">Raised</span>
+      <span class="value">13 284 VKAI</span>
+    </div>
+    <div class="image">
+      <div></div>
+      <figure>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </figure>
+    </div>
+    <div class="light-shadow top"></div>
+    <div class="light-shadow bottom"></div>
+  </div>
+</body>
+
+</html>

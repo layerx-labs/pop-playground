@@ -58,7 +58,7 @@ export default function Pop({
         }
         value={
           persona === "participant" || persona === "jury"
-            ? `${vkais} VKAIS`
+            ? `${vkais} VKAI`
             : "2023"
         }
       />
