@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 
-const memoryOptions = [
-  { name: "Participant" },
-  { name: "Jury" },
-  { name: "Mentor" },
+const personas = [
+  { name: "Participant", inStock: true },
+  { name: "Jury", inStock: false },
+  { name: "Mentor", inStock: false },
 ];
 
 function classNames(...classes: string[]) {
@@ -12,7 +12,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function SelectPersona() {
-  const [mem, setMem] = useState(memoryOptions[0]);
+  const [mem, setMem] = useState(personas[0]);
 
   return (
     <RadioGroup value={mem} onChange={setMem} className="select-persona">
@@ -21,13 +21,15 @@ export default function SelectPersona() {
         Choose a memory option{" "}
       </RadioGroup.Label>
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-        {memoryOptions.map((option) => (
+        {personas.map((type) => (
           <RadioGroup.Option
-            key={option.name}
-            value={option}
+            key={type.name}
+            value={type}
             className={({ active, checked }) =>
               classNames(
-                "cursor-pointer focus:outline-none",
+                type.inStock
+                  ? "cursor-pointer focus:outline-none"
+                  : "opacity-25 cursor-not-allowed",
                 active ? "ring-2 ring-offset-2 ring-indigo-500" : "",
                 checked
                   ? "bg-indigo-600 border-transparent text-white hover:bg-indigo-700"
@@ -36,7 +38,7 @@ export default function SelectPersona() {
               )
             }
           >
-            <RadioGroup.Label as="span">{option.name}</RadioGroup.Label>
+            <RadioGroup.Label as="span">{type.name}</RadioGroup.Label>
           </RadioGroup.Option>
         ))}
       </div>
