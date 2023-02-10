@@ -3,11 +3,13 @@ export default function TextField({
   placeholder,
   value,
   onChange,
+  disabled,
 }: {
   label: string;
   placeholder: string;
   value: string;
   onChange: (value: string) => void;
+  disabled?: boolean;
 }) {
   return (
     <div className="text-field rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-indigo-600 focus-within:ring-1 focus-within:ring-indigo-600">
@@ -22,6 +24,7 @@ export default function TextField({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
       />
     </div>
   );

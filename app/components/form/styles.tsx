@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 50px;
 
   > div {
     &:first-child {
@@ -10,6 +13,10 @@ export const Wrapper = styled.div`
       padding-right: 100px;
 
       .select-persona {
+        margin-bottom: 15px;
+      }
+
+      .select-hackathon {
         margin-bottom: 15px;
       }
 
