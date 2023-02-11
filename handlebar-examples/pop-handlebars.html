@@ -292,9 +292,9 @@
       <span class="value">{{copyL}}</span>
     </div>
     <div class="copy bl">
-      {{#if persona 'INNOVATOR'}}
+      {{#if (equals persona 'INNOVATOR')}}
         <span class="legend">Raised</span>
-        {{else}} {{#if persona 'JURY'}}
+        {{else}} {{#if (equals persona 'JURY')}}
           <span class="legend">Invested</span>
         {{else}}
           <span class="legend">Year</span>
