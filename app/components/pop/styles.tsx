@@ -125,7 +125,8 @@ export const Image = styled.div<ImageProps>`
       width: calc(100% + var(--glitch) * 2);
       height: 50px;
       background-image: url(${(props) => props.src});
-      background-size: cover;
+      background-size: auto 800px;
+      background-position: center;
       background-repeat: no-repeat;
       background-color: magenta;
       background-blend-mode: screen;
